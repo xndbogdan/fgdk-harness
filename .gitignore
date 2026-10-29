@@ -1,0 +1,8 @@
+paths.local.txt
+.tmp/
+__pycache__/
+*.pyc
+*.stderr.log
+*.run
+*.ttd
+seeds.tsv
