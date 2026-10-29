@@ -58,7 +58,7 @@ npx rea-agents setup
 
 REA needs Node.js 22+, Ghidra and Java. The broker scripts in [`tools/rea/`](tools/rea/README.md) need Python 3.11+ and no third-party packages. The broker is only a persistent wrapper; REA's own MCP server also works directly.
 
-For repeated queries, run the broker in the background and leave it running for the session. It keeps one `rea mcp` process alive: the first query imports and analyzes the executable (about 40 seconds), and later queries return in seconds.
+For repeated queries, run the broker in the background and leave it running for the session. It keeps one `rea mcp` process alive: the first query imports and analyzes the executable (about 40 seconds), and later queries return in seconds. The broker must run from an elevated terminal; on Windows, start PowerShell or Windows Terminal as Administrator.
 
 ```sh
 # once: write a seed file from a function census
@@ -75,7 +75,7 @@ python tools/rea/reaq.py open_binary \
 python tools/rea/reaq.py procedure_pseudo_code '{"procedure":"0x494070"}'
 ```
 
-Run the broker in the background (a second terminal, your shell's background operator, or `Start-Process`), and leave it running while you query. It listens on `127.0.0.1:47123` by default; set `REA_BROKER_PORT` to move it. `REA_MJS` overrides the `rea` entry script. The seed file is optional; unseeded analysis still works, but functions reached only through callback tables may answer "No procedure exists". See [`tools/rea/README.md`](tools/rea/README.md) for requirements, seeding another executable and the evidence caveats.
+Run the broker in the background (a second elevated terminal, your shell's background operator, or `Start-Process`), and leave it running while you query. It listens on `127.0.0.1:47123` by default; set `REA_BROKER_PORT` to move it. `REA_MJS` overrides the `rea` entry script. The seed file is optional; unseeded analysis still works, but functions reached only through callback tables may answer "No procedure exists". See [`tools/rea/README.md`](tools/rea/README.md) for requirements, seeding another executable and the evidence caveats.
 
 ## TTD traces
 

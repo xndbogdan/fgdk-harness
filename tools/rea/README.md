@@ -9,6 +9,7 @@ Small helpers for using [REA](https://github.com/morluto/rea) with the FGDK harn
 - `rea-agents` (`npm install --global rea-agents`); `npx rea-agents setup` registers its MCP server with your agent if you want to query it directly
 - Ghidra, with `GHIDRA_INSTALL_DIR` pointing at it
 - Java, with `JAVA_HOME` pointing at it for REA 6.7+
+- Windows: an elevated terminal (Run as Administrator) to start the broker
 
 Tested with `rea-agents` 6.7.0, Ghidra 12.1.4 and Java 21 on Windows.
 
@@ -30,7 +31,7 @@ The CSV needs an `address` column (hex or decimal), such as OpenV2K's public `do
 python tools/rea/rea_broker.py .tmp/v2000-seeds.tsv
 ```
 
-Run it in the background and leave it running for the session:
+On Windows, start PowerShell or Windows Terminal as Administrator first; the broker must run elevated. Then run it in the background and leave it running for the session:
 
 ```sh
 # POSIX shell

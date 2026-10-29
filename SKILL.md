@@ -24,7 +24,7 @@ Paths differ on every machine. They live in `paths.local.txt` beside this file, 
 
 ## Retail reference (optional)
 
-The probes below show what a port does. To see what retail does, use [REA](https://github.com/morluto/rea): it runs Ghidra over your own copy of a retail executable. The harness includes a small broker in [`tools/rea/`](tools/rea/README.md) that keeps one `rea mcp` process alive. Seed it once, then start it in the background for the session before the first query:
+The probes below show what a port does. To see what retail does, use [REA](https://github.com/morluto/rea): it runs Ghidra over your own copy of a retail executable. The harness includes a small broker in [`tools/rea/`](tools/rea/README.md) that keeps one `rea mcp` process alive. Seed it once, then start it in the background for the session before the first query. The broker must run from an elevated terminal; on Windows, ask the user to start PowerShell or Windows Terminal as Administrator.
 
 ```sh
 # once: write the seed file from a function census
