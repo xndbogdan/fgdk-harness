@@ -24,7 +24,7 @@ Paths differ on every machine. They live in `paths.local.txt` beside this file, 
 
 ## Retail reference (optional)
 
-The probes below show what a port does. To see what retail does, use [REA](https://github.com/morluto/rea): it runs Ghidra over your own copy of a retail executable. The harness includes a small broker in [`tools/rea/`](tools/rea/README.md) that keeps one `rea mcp` process alive. Seed it once, then start it in the background for the session before the first query. The broker must run from an elevated terminal; on Windows, ask the user to start PowerShell or Windows Terminal as Administrator.
+The probes below show what a port does. To see what retail does, use [REA](https://github.com/morluto/rea): it runs Ghidra over your own copy of a retail executable. The harness includes a small broker in [`tools/rea/`](tools/rea/README.md) that keeps one `rea mcp` process alive. Seed it once, then start it in the background for the session before the first query. Run these commands from this skill's folder: their paths are relative to it. The broker needs no administrator rights.
 
 ```sh
 # once: write the seed file from a function census
@@ -37,7 +37,7 @@ python tools/rea/rea_broker.py .tmp/rea-seeds.tsv
 
 The first query imports and analyzes the executable (about 40 seconds); later queries return in seconds. `reaq.py` queries the running broker. Seeding, requirements and examples are in [`tools/rea/README.md`](tools/rea/README.md). REA is optional: probe, sweep and test runs need only the ports.
 
-For questions REA cannot settle — which branch ran, or how a reconstructed function was actually called — WinDbg or WinDbgX with [Time Travel Debugging](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/time-travel-debugging-overview) (TTD) is the strongest evidence. Record a retail trace into `$SCRATCH`, then read its call stacks and arguments alongside REA's output; the probes here confirm whether the port matches. Traces contain retail code and must not be committed. TTD is Windows-only and gets tedious once the interesting call paths are known; ordinary testing needs only the harness.
+For questions REA cannot settle — which branch ran, or how a reconstructed function was actually called — WinDbg or WinDbgX with [Time Travel Debugging](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/time-travel-debugging-overview) (TTD) is the strongest evidence. Record a retail trace into `$SCRATCH` (recording needs WinDbg or `TTD.exe` run as Administrator, so ask the user to start it), then read its call stacks and arguments alongside REA's output; the probes here confirm whether the port matches. Traces contain retail code and must not be committed. TTD is Windows-only and gets tedious once the interesting call paths are known; ordinary testing needs only the harness.
 
 ## Rules
 

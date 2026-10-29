@@ -3,8 +3,8 @@
     python tools/rea/reaq.py TOOL 'JSON-ARGS' [--raw]
     python tools/rea/reaq.py procedure_pseudo_code '{"procedure":"0x494070"}'
 
-Start the broker in the background first; see README.md. Each result prints its
-Evidence ID first (`# ev_...`).
+Start the broker in the background first; see README.md. A result with an
+Evidence ID prints it first (`# ev_...`).
 """
 
 import json
@@ -51,7 +51,8 @@ def main() -> None:
         value = result.get("raw_result", result.get("result", result))
         if isinstance(value, dict) and "value" in value:
             value = value["value"]
-        print("#", result.get("evidence_id", ""))
+        if result.get("evidence_id"):
+            print("#", result["evidence_id"])
         print(value if isinstance(value, str) else json.dumps(value, indent=1))
 
 

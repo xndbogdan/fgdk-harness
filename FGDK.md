@@ -57,7 +57,7 @@ C:\Coding\V3000\Code\Common\     Infestation's game
 That is every build path in the two executables:
 
 - Neither exe has a debug directory, so there is no `.pdb` path.
-- Other drive paths are not build folders. V2000 has its LaserLok copy-protection and debug files (`x:\LASERLOK\LASERLOK.IN`, `C:\DEBUG.SP` and similar). Infestation has its default install folder `C:\Program Files\Infestation\` and `c:\bad_lode.txt`.
+- Other drive paths are not build folders. V2000's (`x:\LASERLOK\LASERLOK.IN`, `C:\NOMOUSE.SP`, `C:\PATH.SYS`, `C:\DEBUG.SP`, `C:\DEBSCR.SP` and `c:\timestmp.tmp`) sit in one block of data with its LaserLok copy protection, and OpenV2K's function census files the code that uses `c:\timestmp.tmp` as library code, not the game's. Infestation has its default install folder `C:\Program Files\Infestation\` and `c:\bad_lode.txt`.
 
 The names suggest Infestation was internally treated as V2000's successor: `virus2` became `V3000`, and `FGDK` became `Fgdk2`. That is speculation from the names; the code evidence is separate. The object-table line numbers above match almost one for one, and the two games share large parts of the engine's platform layer.
 

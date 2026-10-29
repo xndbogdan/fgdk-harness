@@ -112,7 +112,9 @@ def main() -> None:
             rpc("notifications/initialized", notify=True)
 
             server = socket.socket()
-            server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            if os.name != "nt":
+                # On Windows this option lets a second broker share a port in use.
+                server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try:
                 server.bind(("127.0.0.1", PORT))
             except OSError as error:

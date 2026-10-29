@@ -5,11 +5,11 @@ Small helpers for using [REA](https://github.com/morluto/rea) with the FGDK harn
 ## Requirements
 
 - Python 3.11+ (standard library only)
-- Node.js 22+
+- Node.js 22.19+, 24.11+ or 26+ (REA's `engines`)
 - `rea-agents` (`npm install --global rea-agents`); `npx rea-agents setup` registers its MCP server with your agent if you want to query it directly
 - Ghidra, with `GHIDRA_INSTALL_DIR` pointing at it
 - Java, with `JAVA_HOME` pointing at it for REA 6.7+
-- Windows: an elevated terminal (Run as Administrator) to start the broker
+- No administrator rights: the broker listens on 127.0.0.1, and REA keeps its Ghidra project in the temp folder (`%TEMP%\rea-ghidra-*` on Windows). Only `npm install --global` needs an elevated terminal, and only when npm's global folder is under Program Files (`npm root -g` shows it).
 
 Tested with `rea-agents` 6.7.0, Ghidra 12.1.4 and Java 21 on Windows.
 
@@ -31,7 +31,7 @@ The CSV needs an `address` column (hex or decimal), such as OpenV2K's public `do
 python tools/rea/rea_broker.py .tmp/v2000-seeds.tsv
 ```
 
-On Windows, start PowerShell or Windows Terminal as Administrator first; the broker must run elevated. Then run it in the background and leave it running for the session:
+Run it in the background and leave it running for the session:
 
 ```sh
 # POSIX shell
@@ -55,14 +55,14 @@ python tools/rea/reaq.py procedure_pseudo_code '{"procedure":"0x494070"}'
 python tools/rea/reaq.py procedure_assembly '{"procedure":"0x494070"}'
 python tools/rea/reaq.py procedure_callers '{"procedure":"0x494070"}'
 python tools/rea/reaq.py xrefs '{"address":"0x4f7308"}'
-python tools/rea/reaq.py read_bytes '{"address":"0x401000","size":64}'
+python tools/rea/reaq.py read_bytes '{"address":"0x401000","length":64}'
 ```
 
-Tool names and arguments come from REA; `--raw` prints the full MCP result. Each result starts with its evidence ID.
+Tool names and arguments come from REA; `--raw` prints the full MCP result. A result with an evidence ID prints it first.
 
 ## Evidence
 
-Evidence IDs live in the broker process. Export the evidence bundle before stopping the broker, with REA's `export_evidence_bundle` tool and a directory under `.tmp/rea-evidence/`. The transcript and bundle are local, uncommitted scratch.
+Evidence IDs live in the broker process. Export the evidence bundle before stopping the broker, with REA's `export_evidence_bundle` tool and an absolute file path (REA rejects relative ones): `reaq.py export_evidence_bundle '{"path":"C:/scratch/fgdk/rea-evidence/v2000.json"}'`. The transcript and bundle are local, uncommitted scratch.
 
 ## Limits
 
