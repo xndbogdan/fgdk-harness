@@ -6,7 +6,7 @@ description: >
 
 # FGDK harness
 
-V2000 (1998) and Infestation (2000) are Frontier Developments games on one engine, FGDK (I assume Frontier Game Development Kit; Infestation runs its C++ rewrite, Fgdk2). Their ports, OpenV2K and the Infestation port, run unattended and repeatable from the command line, so each port is its own test harness. Both read the player's own copy of the retail game.
+V2000 (1998) and Infestation (2000) are Frontier Developments games on one engine, FGDK (I assume Frontier Game Development Kit; Infestation runs its C++ rewrite, Fgdk2). Their ports, OpenV2K and OpenInfestation, run unattended and repeatable from the command line, so each port is its own test harness. Both read the player's own copy of the retail game.
 
 ## Paths
 
@@ -17,7 +17,7 @@ Paths differ on every machine. They live in `paths.local.txt` beside this file, 
 | `OPENV2K` | the OpenV2K checkout |
 | `V2000_DATA` | retail V2000 for test runs (`PRELOAD.DAT`, `Overlay/`); usually `$OPENV2K/retail` |
 | `V2000_INSTALL` | where the user plays V2000 (`settings.json`, `port-config.json`, `SlotNN`) |
-| `INFESTATION_PORT` | the Infestation port checkout (its Cargo workspace) |
+| `INFESTATION_PORT` | the OpenInfestation checkout (its Cargo workspace) |
 | `INFESTATION_DATA` | a copy of retail Infestation for test runs (`Infest.exe`, `PreLoad.dat`, `Overlay/`) |
 | `INFESTATION_INSTALL` | where the user plays Infestation (`port-state/`, `logs/`) |
 | `SCRATCH` | a folder for probe runs: settings copies, start states, key replays, output |

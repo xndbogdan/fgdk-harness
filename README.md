@@ -1,8 +1,8 @@
 # FGDK harness
 
-An agent skill for testing and debugging the ports of Frontier's FGDK games: [OpenV2K](https://github.com/xndbogdan/OpenV2K) (V2000, 1998) and the Infestation port (Infestation, 2000). It teaches a coding agent to run either port headless and repeatable, reproduce a player's bug report, sweep every world for regressions and test port features over real worlds.
+An agent skill for testing and debugging the ports of Frontier's FGDK games: [OpenV2K](https://github.com/xndbogdan/OpenV2K) (V2000, 1998) and [OpenInfestation](https://github.com/xndbogdan/OpenInfestation) (Infestation, 2000). It teaches a coding agent to run either port headless and repeatable, reproduce a player's bug report, sweep every world for regressions and test port features over real worlds.
 
-I use it for my own work on OpenV2K and the Infestation port. OpenV2K is public; the Infestation port is not yet public.
+I use it for my own work on OpenV2K and OpenInfestation. Both are public.
 
 The harness is meant to be used with [REA](https://github.com/morluto/rea). The port commands answer "what does the port do?"; REA runs Ghidra over your own copy of the retail executables and answers "what does retail do here?". That comparison is the point. REA is optional: the probes, sweeps and port tests work without it.
 
